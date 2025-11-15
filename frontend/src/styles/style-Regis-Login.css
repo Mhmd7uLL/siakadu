@@ -1,0 +1,25 @@
+* {
+    background-color: #f5f9f0;
+}
+
+/* REGISTER MAHASISWA */
+.bg-color1 {
+    background-color: #1d28a0;
+    color: white;
+}
+
+.bg-hover1:hover {
+  background-color: white;
+  font-weight: bold;
+  color: #1d28a0;
+  border: 1px solid #1d28a0;
+  transition: all 0.1s ease-in-out;
+}
+
+.grad-color1 {
+  background: linear-gradient(to bottom, #1d28a0, #1e293b);
+}
+
+.text-justify {
+  text-align: justify;
+}

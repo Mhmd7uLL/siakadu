@@ -1,9 +1,22 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./Pages/Landing";
+import RegistMHS from "./Pages/Register";
+import LoginMHS from "./Pages/Login";
+import "./styles/style-Regis-Login.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>🎓 SIAKAD Frontend</h1>
-      <p>React berjalan dengan baik!</p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/register" element={<RegistMHS />} />
+        <Route path="/login" element={<LoginMHS />} />
+
+        {/* optional: halaman default */}
+        <Route path="/" element={<LoginMHS />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
