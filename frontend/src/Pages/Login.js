@@ -1,6 +1,36 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function LoginMHS() {
+
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("http://localhost:5000/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (res.status === 401) {
+      alert("Login gagal! Email atau password salah.");
+      return;
+    }
+
+    alert("Login berhasil!");
+    navigate("/dashboard");
+  } catch (err) {
+    console.error(err);
+    alert("Terjadi kesalahan server");
+  }
+};
+
   return (
     <div className="regis-MHS container my-5">
       <div className="box-regist d-flex flex-row mx-auto bg-white text-white rounded-5 border border-primary">
@@ -13,7 +43,7 @@ function LoginMHS() {
           <h1 className="d-flex justify-content-center mb-5 bg-white text-black">
             Halaman Login
           </h1>
-          <form className="mx-auto p-2 text-black rounded w-75 bg-white">
+          <form onSubmit={handleLogin} className="mx-auto p-2 text-black rounded w-75 bg-white">
             <div className="mb-3 bg-white">
               <label className="form-label bg-white">Email</label>
               <input
@@ -21,6 +51,8 @@ function LoginMHS() {
                 className="form-control"
                 placeholder="Masukkan Email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -31,6 +63,8 @@ function LoginMHS() {
                 className="form-control"
                 placeholder="Masukkan password"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 

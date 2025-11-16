@@ -4,6 +4,7 @@ import RegistMHS from "./Pages/Register";
 import LoginMHS from "./Pages/Login";
 import "./styles/style-Regis-Login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Dashboard from "./Pages/Mahasiswa/Dashboard";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/register" element={<RegistMHS />} />
         <Route path="/login" element={<LoginMHS />} />
+        <Route path="/dashboard" element={<Dashboard />} />
 
         {/* optional: halaman default */}
         <Route path="/" element={<LoginMHS />} />
