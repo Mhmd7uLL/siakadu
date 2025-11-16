@@ -1,36 +1,37 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
-function LoginMHS() {
+// coba dulu,kalau berhasil buat databsenya
+const VALID_USERS = [
+  { email: 'mahasiswa1@univ.com', password: '123', role: 'mahasiswa', nama: 'Budi Santoso', id: 1 },
+  { email: 'dosen@univ.com', password: '789', role: 'dosen', nama: 'Dr. Siti Dewi', id: 10, canAccKRS: true },
+];
 
+function LoginMHS({ onLogin}) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (e) => {
-  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userMatch = VALID_USERS.find(
+      (user) => user.email === email && user.password === password
+    )
 
-  try {
-    const res = await fetch("http://localhost:5000/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-
-    if (res.status === 401) {
-      alert("Login gagal! Email atau password salah.");
-      return;
+    if (userMatch) {
+      const userData = {
+        id: userMatch.id,
+        email: userMatch.email,
+        role: userMatch.role,
+        nama: userMatch.nama,
+        ...(userMatch.role === 'dosen' && { canAccKRS: userMatch.canAccKRS }),
+      };
+      onLogin(userData);
+      navigate("/dashboard");
+    }else {
+      alert("Invalid email or password");
     }
-
-    alert("Login berhasil!");
-    navigate("/dashboard");
-  } catch (err) {
-    console.error(err);
-    alert("Terjadi kesalahan server");
-  }
-};
-
+  };
   return (
     <div className="regis-MHS container my-5">
       <div className="box-regist d-flex flex-row mx-auto bg-white text-white rounded-5 border border-primary">
@@ -43,7 +44,7 @@ function LoginMHS() {
           <h1 className="d-flex justify-content-center mb-5 bg-white text-black">
             Halaman Login
           </h1>
-          <form onSubmit={handleLogin} className="mx-auto p-2 text-black rounded w-75 bg-white">
+          <form className="mx-auto p-2 text-black rounded w-75 bg-white" onSubmit={handleSubmit}>
             <div className="mb-3 bg-white">
               <label className="form-label bg-white">Email</label>
               <input

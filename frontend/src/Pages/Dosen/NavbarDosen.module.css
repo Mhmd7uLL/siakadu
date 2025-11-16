@@ -1,0 +1,99 @@
+/* Warna dari gambar desain Anda */
+:root {
+    --sidebar-bg: #001f3f; /* Biru Tua */
+    --sidebar-text: #aeb9c7; /* Teks abu-abu */
+    --sidebar-active: #0052cc; /* Biru terang (aktif) */
+    --sidebar-hover: #003366; /* Biru (hover) */
+    --sidebar-white: #ffffff;
+  }
+  
+  .sidebar {
+    width: 260px; /* Lebar sidebar */
+    min-height: 100vh;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column; /* Menyusun item dari atas ke bawah */
+    padding: 1rem;
+  }
+  
+  .logoHeader {
+    padding: 1rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--sidebar-white);
+  }
+  
+  .logoHeader span {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--sidebar-text);
+  }
+  
+  .navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Mendorong profileInfo ke bawah */
+  }
+  
+  .navList li {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  /* Style saat item di-hover */
+  .navList li:hover {
+    background-color: var(--sidebar-hover);
+    color: var(--sidebar-white);
+  }
+  
+  /* Style untuk item yang sedang aktif (diklik) */
+  .navList li.active {
+    background-color: var(--sidebar-active);
+    color: var(--sidebar-white);
+    font-weight: 600;
+  }
+  
+  /* Bagian profil user di bawah */
+  .profileInfo {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-top: 1px solid var(--sidebar-hover);
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--sidebar-active);
+    color: var(--sidebar-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-right: 1rem;
+    flex-shrink: 0; /* Mencegah avatar menyusut */
+  }
+  
+  .profileText h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--sidebar-white);
+    font-weight: 600;
+  }
+  
+  .profileText p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--sidebar-text);
+  }
