@@ -33,10 +33,10 @@ function LoginMHS({ onLogin}) {
   };
   return (
     <div className="regis-MHS container my-5">
-      <div className="box-regist d-flex flex-row mx-auto bg-white text-white rounded-5 border border-primary">
-        <div className="p-5 grad-color1 w-75 rounded-5 fs-1 fw-bold">
-            <h5 className="bg-color1 fw-lighter fs-6">- UNIVERSITY Present -</h5>
-            Let's become part of the big family !
+      <div className="box-regist d-flex flex-row mx-auto bg-white text-white rounded-5 border border-secondary-subtle">
+        <div className="p-5 grad-color2 w-75 rounded-5 fs-1 fw-bold">
+            <h5 className="bg-transparent fw-lighter fs-6">- UNIVERSITY Present -</h5>
+            <h1 className="bg-transparent fw-bold">Let's become part of the big family !</h1>
         </div>
 
         <div className="mt-5 p-4 w-75 mx-5 bg-white">

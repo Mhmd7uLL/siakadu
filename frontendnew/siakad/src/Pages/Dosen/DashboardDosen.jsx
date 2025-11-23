@@ -100,7 +100,7 @@ const DashboardDosen = ({ user }) => {
 
   return (
     <div className={styles.dashboardContainer}>
-      <NavbarDosen user={user} onMenuSelect={setMenu} activeMenu={menu} />
+      <NavbarDosen user={user} onMenuSelect={setMenu} activeMenu={menu}/>
       
       <main className={styles.mainContent}>
         <header className={styles.topHeader}>

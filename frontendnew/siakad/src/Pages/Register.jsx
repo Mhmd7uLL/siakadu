@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function RegistMHS() {
   return (
     <div className="regis-MHS container my-5">
-      <div className="box-regist d-flex flex-row bg-white mx-auto text-white rounded-5 border border-primary">
+      <div className="box-regist d-flex flex-row bg-white mx-auto text-white rounded-5 border border-secondary-subtle">
         <div className="mt-5 p-4 w-75 mx-5 bg-white">
           <h1 className="d-flex justify-content-center mb-5 text-black bg-white fw-bold">
             Halaman Registrasi 
@@ -59,8 +59,8 @@ function RegistMHS() {
         </div>
 
         <div className="ms-4 p-5 grad-color1 w-75 rounded-5 fs-1 fw-bold">
-            <h5 className="bg-color1 fw-lighter fs-6">- UNIVERSITY Present -</h5>
-            Let's become part of the big family !
+            <h5 className="bg-color1 fw-lighter fs-6 bg-transparent">- UNIVERSITY Present -</h5>
+            <h1 className="bg-transparent fw-bold">Let's become part of the big family !</h1>
         </div>
       </div>
     </div>
