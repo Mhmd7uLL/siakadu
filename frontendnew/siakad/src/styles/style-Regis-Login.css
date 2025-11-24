@@ -8,6 +8,12 @@
     color: white;
 }
 
+.bg-color2 {
+    
+    background-color: #1d28a0;
+    color: white;
+}
+
 .bg-hover1:hover {
   background-color: white;
   font-weight: bold;
@@ -17,7 +23,35 @@
 }
 
 .grad-color1 {
-  background: linear-gradient(to bottom, #1d28a0, #1e293b);
+  position: relative;
+  background-image: url('../assets/bg/mhs.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+
+.grad-color2 {
+  position: relative;
+  background-image: url('../assets/bg/tendik.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+
+.grad-color1::before,
+.grad-color2::before {
+  border-radius: 30px;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); 
+  z-index: 1;
+}
+
+.grad-color1 > *,
+.grad-color2 > * {
+  position: relative;
+  z-index: 2; 
 }
 
 .text-justify {

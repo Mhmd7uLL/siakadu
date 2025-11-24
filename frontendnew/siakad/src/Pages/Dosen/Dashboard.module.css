@@ -8,6 +8,10 @@
     --border-color: #e0e0e0;
   }
   
+  .navbarDosen {
+    background-color: var(--white);
+  }
+
   /* 7. Layout Utama */
   .dashboardContainer {
     display: flex;
@@ -78,6 +82,7 @@
     color: var(--text-light);
     font-size: 0.9rem;
     font-weight: 500;
+    background-color: var(--white);
   }
   
   .statCard p {
@@ -85,6 +90,7 @@
     color: var(--text-dark);
     font-size: 2rem;
     font-weight: 700;
+    background-color: var(--white);
   }
   
   /* 6. List Container (untuk tabel) */
@@ -97,6 +103,7 @@
   
   .listContainer h3 {
     margin-top: 0;
+    background-color: var(--white);
   }
   
   .searchInput {
@@ -106,6 +113,7 @@
     border-radius: 8px;
     margin-bottom: 1rem;
     font-size: 0.9rem;
+    background-color: var(--white);
   }
   
   .dosenTable {
@@ -119,6 +127,7 @@
     padding: 0.75rem 1rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
+    background-color: var(--white);
   }
   
   .dosenTable th {
@@ -126,6 +135,7 @@
     color: var(--text-light);
     font-size: 0.85rem;
     text-transform: uppercase;
+    background-color: var(--white);
   }
   
   .dosenTable td {
