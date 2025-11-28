@@ -1,0 +1,183 @@
+.absensi-wrapper {
+    flex-grow: 1; 
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding: 32px; 
+    font-family: Arial, sans-serif;
+}
+
+.absensi-header {
+    font-size: 24px; 
+    font-weight: 600; 
+    color: #343a40; 
+    margin-bottom: 24px;
+    background-color: #f8f9fa;
+}
+
+.absensi-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+    padding: 24px;
+}
+
+.control-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    background-color: white;
+}
+
+.control-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #495057;
+    background-color: white;
+}
+
+.control-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.control-dropdown {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: #495057;
+    background-color: #f8f9fa;
+    outline: none;
+    cursor: pointer;
+}
+
+.control-button {
+    background-color: #1a237e; 
+    color: white;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.control-button:hover {
+    background-color: #151c6b;
+}
+
+.info-box-blue {
+    background-color: #e0f7fa;
+    border: 1px solid #b2ebf2;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    color: #00796b;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    background-color: white;
+}
+
+.absensi-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    background-color: white;
+}
+
+.absensi-table th {
+    padding: 16px 8px;
+    color: #6c757d;
+    font-weight: 500;
+    border-bottom: 1px solid #e9ecef;
+    background-color: #ffffff;
+}
+
+.absensi-table td {
+    padding: 16px 8px;
+    color: #495057;
+    border-bottom: 1px solid #f8f9fa;
+    background-color: #ffffff;
+}
+
+.absensi-table tbody tr:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.1s;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 9999px;  
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.badge-hadir {
+    background-color: #e6ffed; 
+    color: #198754;  
+}
+
+.badge-izin {
+    background-color: #fff3cd;  
+    color: #ffc107; 
+}
+
+.badge-alpha {
+    background-color: #f8d7da;  
+    color: #dc3545;  
+}
+ 
+.action-select {
+    background-color: #f1f3f5;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+ 
+.summary-section {
+    margin-top: 32px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 24px;
+    border: 1px solid #e9ecef;
+}
+
+.summary-title {
+    color: #343a40;
+    font-weight: 600;
+    margin-bottom: 16px;
+    background-color: #f8f9fa;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    text-align: center;
+}
+
+.summary-label {
+    font-weight: 500;
+    margin-bottom: 4px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+}
+
+.summary-count {
+    font-size: 32px;
+    font-weight: bold;
+    background-color: #f8f9fa;
+}
+
+.hadiran-hadir { color: #198754; }  
+.hadiran-izin { color: #ffc107; }  
+.hadiran-alpha { color: #dc3545; }  
