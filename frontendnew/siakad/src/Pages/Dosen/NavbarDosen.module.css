@@ -104,3 +104,20 @@
     color: var(--sidebar-text);
     background-color: var(--sidebar-bg);
   }
+
+  .logout{
+    width: 100%;
+    background-color: red;
+    color: white;
+    padding: 3px 0;
+    border: none;
+    border-radius: 5px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 3px;
+  }
+
+  .logout:hover {
+    background-color: darkred;
+  }

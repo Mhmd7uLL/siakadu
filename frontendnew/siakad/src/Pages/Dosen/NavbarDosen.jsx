@@ -66,6 +66,15 @@ const NavbarDosen = ({ user, onMenuSelect, activeMenu }) => {
           <p>Faculty Member</p>
         </div>
       </div>
+      <li 
+        className={activeMenu === 'logout' ? styles.active : ''}
+        onClick={() => {
+          onMenuSelect('logout'); 
+            window.location.href = './login'; 
+        }}
+        >
+          <button className={styles.logout}>Log Out</button>
+      </li>
     </nav>
   );
 }
