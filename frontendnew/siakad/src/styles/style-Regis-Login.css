@@ -5,11 +5,11 @@
 /* REGISTER MAHASISWA */
 .bg-color1 {
     background-color: #1d28a0;
+    border: none;
     color: white;
 }
 
 .bg-color2 {
-    
     background-color: #1d28a0;
     color: white;
 }
@@ -22,12 +22,20 @@
   transition: all 0.1s ease-in-out;
 }
 
+/* FOR LOGIN AND REGISTER */
+
+.grad-color0 {
+  position: relative;
+  background-image: url('../assets/bg/landing-bg.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .grad-color1 {
   position: relative;
   background-image: url('../assets/bg/mhs.png');
   background-size: cover;
   background-position: center;
-  border-radius: 20px;
 }
 
 .grad-color2 {
@@ -35,12 +43,11 @@
   background-image: url('../assets/bg/tendik.png');
   background-size: cover;
   background-position: center;
-  border-radius: 20px;
 }
 
+.grad-color0::before,
 .grad-color1::before,
 .grad-color2::before {
-  border-radius: 30px;
   content: "";
   position: absolute;
   inset: 0;
@@ -48,6 +55,7 @@
   z-index: 1;
 }
 
+.grad-color0 > *,
 .grad-color1 > *,
 .grad-color2 > * {
   position: relative;

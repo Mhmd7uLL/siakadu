@@ -1,7 +1,6 @@
 /* --- Global Wrapper dan Header --- */
 .krs-wrapper {
     flex-grow: 1; 
-    background-color: #f8f9fa; /* Latar belakang abu-abu muda */
     min-height: 100vh;
     padding: 32px;
     font-family: Arial, sans-serif;
@@ -12,7 +11,6 @@
     font-weight: 600;
     color: #343a40;
     margin-bottom: 24px;
-    background-color: #f8f9fa;
 }
 
 /* --- 1. Kartu Ringkasan (Summary Cards) --- */

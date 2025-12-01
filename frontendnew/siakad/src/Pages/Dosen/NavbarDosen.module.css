@@ -105,6 +105,10 @@
     background-color: var(--sidebar-bg);
   }
 
+  li{
+    background-color: var(--sidebar-bg);
+  }
+
   .logout{
     width: 100%;
     background-color: red;

@@ -1,0 +1,21 @@
+/* Responsive Landing page */
+@media (min-width: 992px) {
+  .landing-box {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+}
+
+/* Responsive Register */
+@media (min-width: 992px) {
+  .register-box {
+    width: 60% !important;
+  }
+}
+
+/* Responsive Login */
+@media (min-width: 992px) {
+  .login-box {
+    width: 60% !important;
+  }
+}

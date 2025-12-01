@@ -32,53 +32,73 @@ function LoginMHS({ onLogin}) {
     }
   };
   return (
-    <div className="regis-MHS container my-5">
-      <div className="box-regist d-flex flex-row mx-auto bg-white text-white rounded-5 border border-secondary-subtle">
-        <div className="p-5 grad-color2 w-75 rounded-5 fs-1 fw-bold">
-            <h5 className="bg-transparent fw-lighter fs-6">- UNIVERSITY Present -</h5>
-            <h1 className="bg-transparent fw-bold">Let's become part of the big family !</h1>
-        </div>
+  <div className="grad-color2 min-vh-100 d-flex align-items-center">
+    <div className="d-flex flex-column flex-md-row mx-auto rounded-4 bg-transparent">
 
-        <div className="mt-5 p-4 w-75 mx-5 bg-white">
-          <h1 className="d-flex justify-content-center mb-5 bg-white text-black">
-            Halaman Login
-          </h1>
-          <form className="mx-auto p-2 text-black rounded w-75 bg-white" onSubmit={handleSubmit}>
-            <div className="mb-3 bg-white">
-              <label className="form-label bg-white">Email</label>
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Masukkan Email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+      {/* LEFT SIDE */}
+      <div className="ms-md-4 mb-4 mb-md-0 bg-transparent text-white text-center text-md-start">
+        <h6 className="bg-transparent">- UNIVERSITY Present -</h6>
+        <h2 className="bg-transparent fw-bold">
+          Let's become part of the big family !
+        </h2>
+      </div>
 
-            <div className="mb-3 bg-white">
-              <label className="form-label bg-white">Password</label>
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Masukkan password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+      {/* RIGHT SIDE */}
+      <div className="login-box py-5 bg-white w-100 w-md-50 shadow-lg rounded-4 ms-md-4">
+        <h5 className="text-center mb-4 text-black fw-bold bg-white">
+          Login
+        </h5>
 
-            <button type="submit" className="rounded-3 w-100 mt-4 bg-color1 bg-hover1 py-2">
-              Login
-            </button>
-            <div className="my-5 text-center fs-6 bg-white">
-              Don't have an account? <Link to="/register" className="bg-white">Sign up here</Link>
-            </div>
-          </form>
-        </div>
+        <form
+          className="mx-auto text-black bg-white px-4"
+          style={{ width: "90%" }}
+          onSubmit={handleSubmit}
+        >
+
+          <div className="mb-3 bg-white">
+            Email
+            <input
+              type="email"
+              className="form-control rounded-5"
+              placeholder="Masukkan Email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-3 bg-white">
+            Password
+            <input
+              type="password"
+              className="form-control rounded-5"
+              placeholder="Masukkan password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="rounded-5 w-100 mt-4 bg-color1 bg-hover1 py-2"
+          >
+            Login
+          </button>
+
+          <div className="text-center bg-white mt-4" style={{ fontSize: "14px" }}>
+            Belum ada akun?{" "}
+            <Link to="/register" className="bg-white">
+              Register
+            </Link>
+          </div>
+
+        </form>
       </div>
     </div>
-  );
+  </div>
+);
+
 }
 
 export default LoginMHS;

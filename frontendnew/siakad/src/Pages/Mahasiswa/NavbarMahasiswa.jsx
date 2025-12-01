@@ -19,12 +19,6 @@ const NavbarMahasiswa = ({ onMenuSelect }) => {
 
       {/* Menu */}
       <ul className={styles.navList}>
-        <li
-          className={activeMenu === 'tambahKRS' ? styles.active : ''}
-          onClick={() => handleSelect('tambahKRS')}
-        >
-          Tambah KRS
-        </li>
 
         <li
           className={activeMenu === 'profil' ? styles.active : ''}
@@ -34,17 +28,24 @@ const NavbarMahasiswa = ({ onMenuSelect }) => {
         </li>
 
         <li
+          className={activeMenu === 'tambahKRS' ? styles.active : ''}
+          onClick={() => handleSelect('tambahKRS')}
+        >
+          KRS
+        </li>
+
+        <li
           className={activeMenu === 'cekJadwal' ? styles.active : ''}
           onClick={() => handleSelect('cekJadwal')}
         >
-          Cek Jadwal
+          Jadwal Kuliah
         </li>
 
         <li
           className={activeMenu === 'pengumpulanTugas' ? styles.active : ''}
           onClick={() => handleSelect('pengumpulanTugas')}
         >
-          Pengumpulan Tugas
+          Tugas
         </li>
 
         <li

@@ -1,6 +1,5 @@
 .absensi-wrapper {
     flex-grow: 1; 
-    background-color: #f8f9fa;
     min-height: 100vh;
     padding: 32px; 
     font-family: Arial, sans-serif;
@@ -11,7 +10,6 @@
     font-weight: 600; 
     color: #343a40; 
     margin-bottom: 24px;
-    background-color: #f8f9fa;
 }
 
 .absensi-container {
@@ -65,7 +63,7 @@
 }
 
 .control-button:hover {
-    background-color: #151c6b;
+    background-color: #3949fa;
 }
 
 .info-box-blue {

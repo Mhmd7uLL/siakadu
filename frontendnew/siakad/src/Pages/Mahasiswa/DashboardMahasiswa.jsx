@@ -9,7 +9,6 @@ import KHS from "./KHS";
 const DashboardMahasiswa = ({ user }) => {
   const [menu, setMenu] = useState("profil");
   const [mahasiswa, setMahasiswa] = useState([]);
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("/api/mahasiswa")
@@ -19,9 +18,6 @@ const DashboardMahasiswa = ({ user }) => {
 
   if (!user || user.role !== "mahasiswa") return null;
 
-  const filteredMahasiswa = mahasiswa.filter((m) =>
-    m.nama.toLowerCase().includes(search.toLowerCase())
-  );
 
   const totalMahasiswa = mahasiswa.length;
   const avgGPA = mahasiswa.length
@@ -33,41 +29,14 @@ const DashboardMahasiswa = ({ user }) => {
       <NavbarMahasiswa onMenuSelect={setMenu} />
 
       <div style={{ flex: 1 }}>
-        <h1 className="bg-white p-4 border border-bottom-black">Dashboard Mahasiswa</h1>
+        <h4 className="bg-white p-4 border border-bottom-black">Dashboard Mahasiswa</h4>
 
         <div className="px-4">
           <p>Total Mahasiswa: {totalMahasiswa}</p>
           <p>Rata-rata GPA: {avgGPA}</p>
         </div>
 
-        <input
-          type="text"
-          placeholder="Cari nama mahasiswa..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="p-2 mx-4 border rounded-4 bg-white mb-4"
-        />
 
-        <table border="1" cellPadding="8" style={{ width: "97%", margin: "0 auto"}}>
-          <thead>
-            <tr>
-              <th>Nama</th>
-              <th>NIM</th>
-              <th>Jurusan</th>
-              <th>GPA</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredMahasiswa.map((m) => (
-              <tr key={m.nim}>
-                <td>{m.nama}</td>
-                <td>{m.nim}</td>
-                <td>{m.jurusan}</td>
-                <td>{m.gpa}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
 
         <div style={{ marginTop: "2rem" }} className="mx-4">
           {menu === "profil" && <ProfilMahasiswa user={user} />}

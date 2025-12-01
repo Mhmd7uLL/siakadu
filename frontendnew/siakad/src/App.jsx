@@ -5,8 +5,10 @@ import RegistMHS from "./Pages/Register.jsx";
 import LoginMHS from "./Pages/Login.jsx";
 import DashboardMahasiswa from "./Pages/Mahasiswa/DashboardMahasiswa";
 import DashboardDosen from "./Pages/Dosen/DashboardDosen";
-import "./styles/style-Regis-Login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/style-Regis-Login.css";
+import "./styles/responsive.css";
+
 
 function App() {
   const [user, setUser] = useState(null);
