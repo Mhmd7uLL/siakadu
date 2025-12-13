@@ -11,18 +11,16 @@ const DashboardMahasiswa = ({ user }) => {
   const [mahasiswa, setMahasiswa] = useState([]);
 
   useEffect(() => {
-  fetch("http://localhost:5000/api/mahasiswa")
-    .then((res) => res.json())
-    .then((data) => setMahasiswa(data))
-    .catch(err => console.error(err));
-}, []);
-
+    fetch("http://localhost:5000/api/mahasiswa")
+      .then((res) => res.json())
+      .then((data) => setMahasiswa(data))
+      .catch(err => console.error(err));
+  }, []);
 
   if (!user || user.role !== "mahasiswa") return null;
 
-
   const totalMahasiswa = mahasiswa.length;
-  const avgGPA = 0; // sementara
+  const avgGPA = 0;
 
   return (
     <div style={{ display: "flex", minHeight: "100vh" }}>
@@ -38,8 +36,8 @@ const DashboardMahasiswa = ({ user }) => {
 
         <div style={{ marginTop: "2rem" }} className="mx-4">
           {menu === "profil" && <ProfilMahasiswa user={user} />}
-          {menu === "tambahKRS" && <FormKRS />}
-          {menu === "cekJadwal" && <JadwalKuliah />}
+          {menu === "tambahKRS" && <FormKRS user={user} />} {}
+          {menu === "cekJadwal" && <JadwalKuliah user={user} />}
           {menu === "pengumpulanTugas" && <PengumpulanTugas />}
           {menu === "khs" && <KHS />}
         </div>
