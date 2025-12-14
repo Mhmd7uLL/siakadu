@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
+const API_BASE = "http://localhost:5000/api";
 
 const JadwalKuliah = ({ user }) => {
   const [selectedDay, setSelectedDay] = useState("Semua Hari");
   const [jadwal, setJadwal] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [semester, setSemester] = useState("Ganjil");
-  const [tahunAjaran, setTahunAjaran] = useState("2024/2025");
+
+  const [semester, setSemester] = useState("1"); 
+  const [tahunAjaran, setTahunAjaran] = useState("2025/2026");
 
   const daysOfWeek = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
 
-  // Fetch jadwal dari backend
   useEffect(() => {
     if (!user?.nim) {
       setError("User tidak valid");
@@ -21,20 +22,42 @@ const JadwalKuliah = ({ user }) => {
     const fetchJadwal = async () => {
       try {
         setLoading(true);
-        const res = await fetch(
-          `http://localhost:5000/api/jadwal/${user.nim}?semester=${semester}&tahun_ajaran=${tahunAjaran}`
-        );
+        setError(null);
 
+        const nim = encodeURIComponent(user.nim);
+        const ta = encodeURIComponent(tahunAjaran);
+        const url = `${API_BASE}/jadwal/${nim}?semester=${encodeURIComponent(semester)}&tahun_ajaran=${ta}`;
+
+        const res = await fetch(url);
         if (!res.ok) {
-          throw new Error("Gagal mengambil jadwal");
+          let body = {};
+          try { body = await res.json(); } catch {}
+          throw new Error(body.error || body.message || `HTTP ${res.status}`);
         }
 
         const data = await res.json();
-        setJadwal(data);
+
+
+        const normalized = Array.isArray(data)
+          ? data.map((item) => ({
+              hari: item.hari ?? item.day ?? null,
+              kode: item.kode ?? item.kode_matkul ?? item.code ?? "",
+              nama_matkul: item.nama_matkul ?? item.nama ?? item.name ?? "",
+              sks: Number(item.sks ?? item.SKS ?? 0),
+              waktu_mulai: item.waktu_mulai ?? item.start_time ?? null,
+              waktu_selesai: item.waktu_selesai ?? item.end_time ?? null,
+              ruang: item.ruang ?? item.room ?? "",
+              nama_dosen: item.nama_dosen ?? item.nama ?? item.dosen ?? "-",
+              status_krs: item.status_krs ?? item.status ?? null,
+            }))
+          : [];
+
+        setJadwal(normalized);
         setError(null);
       } catch (err) {
         console.error("Error fetching jadwal:", err);
-        setError(err.message);
+        setError(err.message || "Gagal mengambil jadwal");
+        setJadwal([]);
       } finally {
         setLoading(false);
       }
@@ -49,14 +72,26 @@ const JadwalKuliah = ({ user }) => {
       ? jadwal
       : jadwal.filter((item) => item.hari === selectedDay);
 
-  // Format waktu
+  // Format waktu (lebih robust terhadap berbagai format)
   const formatTime = (time) => {
     if (!time) return "-";
-    return time.slice(0, 5); // 08:00:00 -> 08:00
+    if (typeof time === "string") {
+      const m = time.match(/^(\d{2}:\d{2})/);
+      if (m) return m[1];
+      return time.slice(0, 5);
+    }
+    try {
+      const d = new Date(time);
+      const hh = String(d.getHours()).padStart(2, "0");
+      const mm = String(d.getMinutes()).padStart(2, "0");
+      return `${hh}:${mm}`;
+    } catch {
+      return "-";
+    }
   };
 
-  // Hitung total SKS
-  const totalSKS = jadwal.reduce((sum, item) => sum + parseInt(item.sks || 0), 0);
+  // Hitung total SKS dari jadwal (semua entry yang diterima)
+  const totalSKS = jadwal.reduce((sum, item) => sum + (Number(item.sks) || 0), 0);
 
   return (
     <div className="p-4 border mt-3 bg-white rounded-4">
@@ -76,20 +111,23 @@ const JadwalKuliah = ({ user }) => {
             value={semester}
             onChange={(e) => setSemester(e.target.value)}
           >
-            <option value="Ganjil">Ganjil</option>
-            <option value="Genap">Genap</option>
+            <option value="1">Ganjil (1)</option>
+            <option value="2">Genap (2)</option>
           </select>
         </div>
         <div className="col-md-4 bg-white">
           <label className="form-label bg-white">Tahun Ajaran</label>
+          {/* Hanya tampilkan 2025/2026 agar tidak membingungkan */}
           <select
             className="form-select"
             value={tahunAjaran}
             onChange={(e) => setTahunAjaran(e.target.value)}
           >
-            <option value="2024/2025">2024/2025</option>
             <option value="2025/2026">2025/2026</option>
           </select>
+          <div style={{ fontSize: 12, color: "#666", marginTop: 6 }}>
+            Menampilkan jadwal mulai dari tahun ajaran 2025/2026.
+          </div>
         </div>
         <div className="col-md-4 bg-white">
           <label className="form-label bg-white">Filter Hari</label>

@@ -19,12 +19,6 @@ const NavbarDosen = ({ user, onMenuSelect, activeMenu }) => {
           Dashboard
         </li>
         
-        <li 
-          className={activeMenu === 'profil' ? styles.active : ''}
-          onClick={() => onMenuSelect('profil')}
-        >
-          Profil
-        </li>
         
         <li 
           className={activeMenu === 'absensi' ? styles.active : ''}

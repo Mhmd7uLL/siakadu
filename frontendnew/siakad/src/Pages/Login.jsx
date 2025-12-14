@@ -9,19 +9,33 @@ function LoginMHS({ onLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/login", {
+      const res = await fetch("/api/login", { // pakai relatif agar Vite proxy bekerja
         method: "POST",
+        credentials: "include", // penting agar cookie session tersimpan
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => null);
 
       if (res.ok) {
-        onLogin(data); // simpan info user di app
+        // simpan user ke localStorage supaya komponen lain bisa baca
+        try {
+          localStorage.setItem("user", JSON.stringify(data));
+          if (data && (data.id || data.student_id)) {
+            const sid = data.id ?? data.student_id;
+            localStorage.setItem("studentId", String(sid));
+          }
+          if (data && data.nim) localStorage.setItem("nim", String(data.nim));
+          window.__USER__ = data; // global quick-access for other components
+        } catch (e) {
+          // ignore storage errors
+        }
+
+        if (typeof onLogin === "function") onLogin(data);
         navigate("/dashboard");
       } else {
-        alert(data.error || "Login gagal");
+        alert(data?.error || "Login gagal");
       }
     } catch (err) {
       console.error(err);
@@ -50,7 +64,7 @@ function LoginMHS({ onLogin }) {
           <form
             className="mx-auto text-black bg-white px-4"
             style={{ width: "90%" }}
-            onSubmit={handleSubmit} // hanya ini ditambah
+            onSubmit={handleSubmit}
           >
             <div className="mb-3 bg-white">
               Email

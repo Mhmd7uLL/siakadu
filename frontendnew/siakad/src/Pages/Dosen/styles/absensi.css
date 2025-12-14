@@ -1,30 +1,40 @@
+/* Responsive styles for absensi layout
+   Replace your current CSS with this file or merge the rules.
+   Breakpoints: desktop >=1024px, tablet ~768-1023px, mobile <=767px
+*/
+
+/* Base layout */
 .absensi-wrapper {
-    flex-grow: 1; 
+    flex-grow: 1;
     min-height: 100vh;
-    padding: 32px; 
+    padding: 32px;
     font-family: Arial, sans-serif;
+    box-sizing: border-box;
 }
 
 .absensi-header {
-    font-size: 24px; 
-    font-weight: 600; 
-    color: #343a40; 
+    font-size: 24px;
+    font-weight: 600;
+    color: #343a40;
     margin-bottom: 24px;
 }
 
 .absensi-container {
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     border: 1px solid #e9ecef;
     padding: 24px;
+    box-sizing: border-box;
 }
 
+/* Controls */
 .control-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
+    gap: 12px;
     flex-wrap: wrap;
     background-color: white;
 }
@@ -34,38 +44,45 @@
     font-weight: 500;
     color: #495057;
     background-color: white;
+    margin-right: auto;
 }
 
 .control-actions {
     display: flex;
     gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .control-dropdown {
     border: 1px solid #ced4da;
     border-radius: 8px;
-    padding: 8px 16px;
+    padding: 8px 12px;
     color: #495057;
     background-color: #f8f9fa;
     outline: none;
     cursor: pointer;
+    min-width: 160px;
+    box-sizing: border-box;
 }
 
 .control-button {
-    background-color: #1a237e; 
+    background-color: #1a237e;
     color: white;
-    padding: 8px 24px;
+    padding: 8px 20px;
     border: none;
     border-radius: 8px;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
+    white-space: nowrap;
 }
 
 .control-button:hover {
     background-color: #3949fa;
 }
 
+/* Info box */
 .info-box-blue {
     background-color: #e0f7fa;
     border: 1px solid #b2ebf2;
@@ -77,9 +94,11 @@
     font-weight: 500;
 }
 
+/* Table wrapper and table */
 .table-wrapper {
     overflow-x: auto;
     background-color: white;
+    border-radius: 8px;
 }
 
 .absensi-table {
@@ -87,20 +106,22 @@
     border-collapse: collapse;
     text-align: left;
     background-color: white;
+    min-width: 900px; /* allow horizontal scroll on narrow screens */
 }
 
-.absensi-table th {
+.absensi-table th,
+.absensi-table td {
     padding: 16px 8px;
-    color: #6c757d;
-    font-weight: 500;
-    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+    color: #495057;
+    border-bottom: 1px solid #f1f3f5;
     background-color: #ffffff;
 }
 
-.absensi-table td {
-    padding: 16px 8px;
-    color: #495057;
-    border-bottom: 1px solid #f8f9fa;
+.absensi-table th {
+    color: #6c757d;
+    font-weight: 500;
+    border-bottom: 1px solid #e9ecef;
     background-color: #ffffff;
 }
 
@@ -109,38 +130,29 @@
     transition: background-color 0.1s;
 }
 
+/* Badges and actions */
 .status-badge {
     display: inline-block;
     padding: 4px 12px;
-    border-radius: 9999px;  
+    border-radius: 9999px;
     font-size: 14px;
     font-weight: 500;
 }
 
-.badge-hadir {
-    background-color: #e6ffed; 
-    color: #198754;  
-}
+.badge-hadir { background-color: #e6ffed; color: #198754; }
+.badge-izin  { background-color: #fff3cd; color: #ffc107; }
+.badge-alpha { background-color: #f8d7da; color: #dc3545; }
 
-.badge-izin {
-    background-color: #fff3cd;  
-    color: #ffc107; 
-}
-
-.badge-alpha {
-    background-color: #f8d7da;  
-    color: #dc3545;  
-}
- 
 .action-select {
     background-color: #f1f3f5;
     border: none;
     border-radius: 4px;
-    padding: 4px 8px;
+    padding: 6px 10px;
     font-size: 14px;
     cursor: pointer;
 }
- 
+
+/* Summary */
 .summary-section {
     margin-top: 32px;
     background-color: #f8f9fa;
@@ -153,7 +165,6 @@
     color: #343a40;
     font-weight: 600;
     margin-bottom: 16px;
-    background-color: #f8f9fa;
 }
 
 .summary-grid {
@@ -167,15 +178,98 @@
     font-weight: 500;
     margin-bottom: 4px;
     font-size: 16px;
-    background-color: #f8f9fa;
 }
 
 .summary-count {
     font-size: 32px;
     font-weight: bold;
-    background-color: #f8f9fa;
 }
 
-.hadiran-hadir { color: #198754; }  
-.hadiran-izin { color: #ffc107; }  
-.hadiran-alpha { color: #dc3545; }  
+.hadiran-hadir { color: #198754; }
+.hadiran-izin  { color: #ffc107; }
+.hadiran-alpha { color: #dc3545; }
+
+/* Utility responsive tweaks */
+.hidden-mobile { display: inline-block; }
+
+/* ---------------- MEDIA QUERIES ---------------- */
+
+/* Tablet and small laptops */
+@media (max-width: 1023px) {
+  .absensi-wrapper { padding: 24px; }
+  .absensi-container { padding: 20px; }
+
+  .control-title { font-size: 16px; }
+  .control-dropdown { min-width: 140px; padding: 8px 10px; }
+  .control-button { padding: 8px 16px; }
+
+  .absensi-table th, .absensi-table td { padding: 12px 6px; }
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Mobile phones */
+@media (max-width: 767px) {
+  .absensi-wrapper { padding: 16px; }
+  .absensi-container { padding: 16px; }
+
+  /* Stack control section vertically */
+  .control-section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .control-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .control-dropdown {
+    width: 100%;
+    min-width: 0;
+  }
+  .control-button {
+    width: 100%;
+    padding: 10px 12px;
+    text-align: center;
+  }
+
+  /* Make table horizontally scrollable and reduce min-width */
+  .absensi-table { min-width: 720px; }
+  .table-wrapper { border-radius: 8px; }
+
+  .absensi-table th, .absensi-table td {
+    padding: 10px 6px;
+    font-size: 14px;
+  }
+
+  /* Summary becomes single column */
+  .summary-grid { grid-template-columns: 1fr; }
+
+  /* Hide less important columns on very small screens if possible by adding a helper class in HTML:
+     e.g. <th class="hide-mobile">...</th> and <td class="hide-mobile">...</td>
+  */
+  .hide-mobile { display: none; }
+
+  /* Smaller badges and counts */
+  .status-badge { padding: 3px 10px; font-size: 13px; }
+  .summary-count { font-size: 28px; }
+
+  .hidden-mobile { display: none !important; }
+}
+
+/* Very small phones */
+@media (max-width: 420px) {
+  .absensi-wrapper { padding: 12px; }
+  .absensi-header { font-size: 20px; }
+
+  .absensi-table th, .absensi-table td { padding: 8px 6px; font-size: 13px; }
+  .summary-count { font-size: 24px; }
+}
+
+
+/* Small accessibility tweak: increase clickable area on small screens */
+@media (pointer: coarse) and (max-width: 767px) {
+  .control-button, .action-select { padding: 12px; }
+}

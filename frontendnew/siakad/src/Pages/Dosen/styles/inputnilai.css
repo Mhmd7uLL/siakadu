@@ -1,262 +1,132 @@
-.nilai-wrapper {
-    flex-grow: 1; 
-    min-height: 100vh;
-    padding: 32px;
-    font-family: Arial, sans-serif;
+:root{
+  --bg:#f6f8fb;
+  --card-bg:#fff;
+  --muted:#64748b;
+  --accent:#1f3bb8;
+  --success:#16a34a;
+  --danger:#ef4444;
+  --surface-border:#eef4fb;
+  --radius:10px;
+  --pad:14px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-.nilai-header {
-    font-size: 24px;
-    font-weight: 600;
-    color: #343a40;
-    margin-bottom: 24px;
+.nilai-wrapper, .tugas-wrapper {
+  flex-grow: 1;
+  min-height: 100vh;
+  padding: 24px;
+  background: var(--bg);
+  color: #0b1220;
+  box-sizing: border-box;
 }
 
-.nilai-container {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e9ecef;
-    padding: 24px;
-    margin-bottom: 30px;
+/* header */
+.nilai-header, .tugas-header, h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
 }
 
+/* card */
+.nilai-container, .card, .form-tugas-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 16px;
+  border: 1px solid var(--surface-border);
+  box-shadow: 0 6px 20px rgba(15,23,42,0.04);
+  margin-bottom: 18px;
+}
+
+/* control section */
 .control-section-nilai {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    border-bottom: 1px solid #e9ecef;
-    padding-bottom: 15px;
-    background-color: white;
+  display:flex; justify-content:space-between; gap:12px; align-items:center;
+  flex-wrap:wrap; padding-bottom:12px; border-bottom:1px solid #eef2f6; margin-bottom:12px;
 }
+.control-title-nilai { font-size:16px; font-weight:600; color:#0b1220; }
+.control-actions-nilai { display:flex; gap:8px; align-items:center; }
 
-.control-title-nilai {
-    font-size: 18px;
-    font-weight: 500;
-    color: #495057;
-    background-color: white;
-}
-
-.control-actions-nilai {
-    display: flex;
-    gap: 10px;
-}
-
+/* inputs & buttons */
 .control-dropdown-nilai {
-    border: 1px solid #ced4da;
-    border-radius: 6px;
-    padding: 8px 16px;
-    color: #495057;
-    background-color: #f8f9fa;
-    outline: none;
-    cursor: pointer;
+  border:1px solid #d1e3f6; border-radius:8px; padding:8px 12px; background:#f8fbff;
 }
-
-.control-button-nilai {
-    background-color: #1a237e;
-    color: white;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 6px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
+.control-button-nilai, .btn {
+  background: linear-gradient(180deg,var(--accent), #172a9b);
+  color:#fff; padding:8px 12px; border-radius:8px; border:none; cursor:pointer;
+  font-weight:600;
 }
+.control-button-nilai:disabled, .btn:disabled { opacity:.6; cursor:not-allowed; }
 
-.control-button-nilai:hover {
-    background-color: #151c6b;
-}
-
+/* info box */
 .info-matkul-box {
-    background-color: #e3f2fd;
-    border: 1px solid #bbdefb;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 20px;
-    color: #1e88e5;
-    font-size: 14px;
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
+  display:flex; gap:16px; align-items:center; padding:12px; border-radius:10px;
+  background: linear-gradient(90deg, rgba(227,242,253,0.9), rgba(245,252,255,0.6));
+  border:1px solid #dbeffd; color:#0b61b5; margin-bottom:12px; flex-wrap:wrap;
 }
+.info-item { font-weight:600; color:#0b2b4a; }
 
-.info-item {
-    font-weight: 500;
-    background-color: #e3f2fd;
-    color: #495057; 
+/* table wrapper */
+.table-responsive-nilai { overflow-x:auto; border-radius:8px; background:var(--card-bg); padding:6px; }
+
+/* support both .nilai-table and .tugas-table */
+.nilai-table, .tugas-table {
+  width:100%; border-collapse:collapse; font-size:13px; min-width:900px;
 }
-
-.table-responsive-nilai {
-    overflow-x: auto;
-    margin-bottom: 20px;
+.nilai-table thead th, .tugas-table thead th {
+  position: sticky; top: 0; background: var(--card-bg); padding:10px 8px;
+  font-weight:600; color:var(--muted); border-bottom:2px solid #eef2f6; text-align:left;
 }
-
-.nilai-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    font-size: 14px;
+.nilai-table tbody td, .tugas-table tbody td {
+  padding:10px 8px; border-bottom:1px solid #f3f6f9; vertical-align:middle; color:#0b1220;
 }
+.nilai-table tbody tr:hover, .tugas-table tbody tr:hover { background:#fbfdff; }
 
-.nilai-table th {
-    padding: 12px 8px;
-    color: #6c757d;
-    font-weight: 500;
-    border-bottom: 2px solid #e9ecef;
-    white-space: nowrap;
-    background-color: white;
-}
-
-.nilai-table td {
-    padding: 10px 8px;
-    color: #495057;
-    border-bottom: 1px solid #f8f9fa;
-    background-color: white;
-}
-
-.nilai-table tbody tr:hover {
-    background-color: #fcfcfc;
-}
-
+/* inputs inside table */
 .score-input {
-    width: 60px;
-    padding: 5px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    text-align: center;
-    outline: none;
-    transition: border-color 0.2s;
-    background-color: rgb(242, 242, 242);
+  width:66px; padding:6px 8px; border:1px solid #e2e8f0; border-radius:8px; text-align:center;
+  background:#fafbfe; outline:none;
 }
-.score-input:focus {
-    border-color: #1a237e;
-}
+.score-input:focus { border-color:var(--accent); box-shadow:0 0 0 4px rgba(31,59,184,0.06); }
 
-.score-output {
-    font-weight: bold;
-    color: #343a40;
-}
-
+/* score output & badges */
+.score-output { font-weight:700; color:#0b1220; }
 .grade-badge {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 50%;
-    font-size: 14px;
-    font-weight: bold;
-    color: white;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:34px; height:34px; border-radius:999px; font-weight:700; color:#fff;
+  box-shadow:0 2px 6px rgba(11,18,32,0.06);
 }
+.grade-A { background: var(--success); }
+.grade-B { background: #0ea5e9; }
+.grade-C { background: #f59e0b; }
+.grade-D { background: #f97316; }
+.grade-E { background: var(--danger); }
 
-.grade-A { background-color: #28a745; } 
-.grade-B { background-color: #007bff; }
-.grade-C { background-color: #ffc107; } 
-.grade-D, .grade-E { background-color: #dc3545; } 
+/* disabled badge */
+.badge-muted { display:inline-block; padding:6px 10px; border-radius:999px; background:#f1f5f9; color:#475569; font-weight:600; }
 
+/* statistik */
+.statistic-section { margin-top:14px; padding:12px; border-radius:10px; background:var(--card-bg); border:1px solid var(--surface-border); }
+.statistic-grid { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+.stat-item { flex:1; min-width:120px; text-align:center; padding:10px; }
+.stat-value { font-size:20px; font-weight:700; color:#0b1220; }
+.stat-label { font-size:13px; color:var(--muted); margin-top:6px; }
 
-.statistic-section {
-    margin-top: 30px;
-    background-color: #ffffff;
+/* keterangan & bobot */
+.keterangan-section, .form-tugas-card .keterangan-section { margin-top:14px; padding:12px; border-radius:10px; background:var(--card-bg); border:1px solid var(--surface-border); }
+.bobot-grid { display:flex; gap:12px; flex-wrap:wrap; }
+
+/* responsive tweaks */
+@media (max-width: 1024px) {
+  .score-input { width:58px; }
+  .nilai-table, .tugas-table { min-width:700px; }
 }
-
-.statistic-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #343a40;
-    margin-bottom: 15px;
-    background-color: white;
-}
-
-.statistic-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    text-align: center;
-    padding: 15px 0;
-    border-top: 1px solid #e9ecef;
-    background-color: white;
-}
-
-.stat-item {
-    flex: 1;
-    min-width: 100px;
-    background-color: white;
-}
-
-.stat-label {
-    font-size: 14px;
-    color: #6c757d;
-    margin-bottom: 5px;
-    background-color: white;
-}
-
-.stat-value {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.rata-rata { color: #007bff; background-color: white; }
-.grade-A { color: #ffffff; }
-.grade-B { color: #ffffff; }
-.grade-C { color: #ffffff; }
-.grade-D-E { color: #dc3545; background-color: white;}
-
-
-.keterangan-section {
-    padding: 24px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e9ecef;
-}
-
-.keterangan-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #343a40;
-    margin-bottom: 20px;
-    background-color: white;
-}
-
-.bobot-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #e9ecef;
-    background-color: white;
-}
-
-.bobot-item {
-    font-size: 14px;
-    color: #495057;
-    font-weight: 500;
-    background-color: white;
-}
-
-.konversi-box {
-    padding: 12px;
-    background-color: #f0f8ff; 
-    border: 1px solid #d0e8ff;
-    border-radius: 6px;
-    font-size: 14px;
-    color: #0056b3;
-}
-
-.konversi-label {
-    font-weight: bold;
-    margin-right: 10px;
-}
-
 @media (max-width: 768px) {
-    .statistic-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: center;
-        text-align: center;
-    }
+  .nilai-header, .tugas-header { font-size:18px; }
+  .table-responsive-nilai { padding:4px; }
+  .statistic-grid { gap:8px; }
+}
+@media (max-width: 480px) {
+  .nilai-table, .tugas-table { min-width:600px; font-size:13px; }
+  .control-section-nilai { gap:8px; align-items:flex-start; }
+  .control-actions-nilai { width:100%; justify-content:flex-start; }
 }
