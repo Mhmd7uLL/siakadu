@@ -1,9 +1,3 @@
-/* Responsive styles for absensi layout
-   Replace your current CSS with this file or merge the rules.
-   Breakpoints: desktop >=1024px, tablet ~768-1023px, mobile <=767px
-*/
-
-/* Base layout */
 .absensi-wrapper {
     flex-grow: 1;
     min-height: 100vh;
