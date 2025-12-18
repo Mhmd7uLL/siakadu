@@ -250,7 +250,6 @@ router.get('/dosen/:dosenId/krs/pending', async (req, res) => {
 
 
 
-// Replace the existing router.post('/dosen/:dosenId/krs/decide', ...) handler in routes/krs.js with this.
 
 router.post('/dosen/:dosenId/krs/decide', async (req, res) => {
   const { dosenId } = req.params;
@@ -368,7 +367,6 @@ router.post('/dosen/:dosenId/krs/decide', async (req, res) => {
           let targetJadwalId = null;
 
           if (jadwalTpl.rows[0]) {
-            // we have a template; ensure a jadwal exists for the target TA (insert if not)
             const tmpl = jadwalTpl.rows[0];
             const dosenToUse = tmpl.dosen_id ? Number(tmpl.dosen_id) : dosen.id;
             const hariVal = tmpl.hari || null;
@@ -413,7 +411,6 @@ router.post('/dosen/:dosenId/krs/decide', async (req, res) => {
             }
           }
 
-          // 3) If we have a target jadwal id, create enrollment (link krs -> jadwal)
           if (targetJadwalId) {
             try {
               await pool.query(
@@ -446,8 +443,8 @@ router.post('/dosen/:dosenId/krs/decide', async (req, res) => {
             }
           });
         }
-      } // end for loop
-    } // end if approve
+      } 
+    } 
 
     // 4) return response with details (approval succeeded; show any insert issues)
     return res.json({
